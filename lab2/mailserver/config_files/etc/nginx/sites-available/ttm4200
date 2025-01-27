@@ -1,0 +1,68 @@
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        root /var/www/ttm4200;
+        index ttm4200_index.html;
+        server_name www.ttm4200.com;
+        location / {
+            try_files $uri $uri/ =404;
+            }
+        location /postfixadmin/ {
+            root /var/www/ttm4200;
+            index main.php;
+            location ~ ^/postfixadmin/(.+\.php)$ {
+                    try_files $uri =404;
+                    fastcgi_pass unix:/run/php/php8.3-fpm.sock;
+                    fastcgi_index index.php;
+                    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                    include /etc/nginx/fastcgi_params;
+            }
+            location ~* ^/postfixadmin/(.+\.(jpg|jpeg|gif|css|png|js|ico|html|xml|txt))$ {
+                    root /var/www/ttm4200;
+            }
+        }
+        location /phpmyadmin/ {
+            root /var/www/ttm4200;
+            index index.php;
+            location ~ ^/phpmyadmin/(.+\.php)$ {
+                    root /var/www/ttm4200;
+                    try_files $uri =404;
+                    fastcgi_pass unix:/run/php/php8.3-fpm.sock;
+                    fastcgi_index index.php;
+                    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                    include /etc/nginx/fastcgi_params;
+            }
+            location ~* ^/phpmyadmin/(.+\.(jpg|jpeg|gif|css|png|js|ico|html|xml|txt))$ {
+                    root /var/www/ttm4200;
+            }
+        }
+        location /webmail/ {
+            root /var/www/ttm4200;
+            index index.php;
+            location ~ ^/webmail/(.+\.php)$ {
+                    root /var/www/ttm4200;
+                    try_files $uri =404;
+                    fastcgi_index index.php;
+                    fastcgi_pass unix:/run/php/php8.3-fpm.sock;
+                    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                    include /etc/nginx/fastcgi_params;
+            }
+            location ~ ^/webmail/(README|INSTALL|LICENSE|CHANGELOG|UPGRADING)$ {
+                    deny all;
+            }
+            location ~ ^/webmail/(bin|SQL|config|temp|logs)/ {
+                deny all;
+            }
+        }
+        location ~\.php$ {
+            include snippets/fastcgi-php.conf;
+            fastcgi_pass unix:/run/php/php8.3-fpm.sock;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            include fastcgi_params;
+        }
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+             root /var/www/ttm4200;
+		     index 50x.html;
+            }
+      }
