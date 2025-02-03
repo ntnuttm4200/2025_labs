@@ -34,3 +34,4 @@ The course consists of several lab assignments that will be published throughout
 - [Lab 0 -- Server setup, Basics of Linux, and JupyterLab](lab0/)
 - [Lab 1 -- Basic Tools: Docker, Docker Compose, Tcpdump, Wireshark, and Tmux](lab1/)
 - [Lab 2 -- Application Layer: Web, Email, and DNS](lab2/)
+- [Lab 3 -- CS Socket Programming](lab3/)
