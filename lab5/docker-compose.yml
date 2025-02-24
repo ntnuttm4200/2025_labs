@@ -1,0 +1,64 @@
+# ********************** Networks *****************
+networks:
+    net1:
+        ipam: 
+            config:
+                - subnet: 10.20.30.0/29 
+        driver_opts:
+            com.docker.network.bridge.name: br_net1
+    net2:
+        ipam: 
+            config:
+                - subnet: 10.20.40.0/29 
+        driver_opts:
+            com.docker.network.bridge.name: br_net2
+
+
+services:
+    base:
+        image: ttm4200_base:v1
+        build:
+            context: ./ttm4200_base
+            dockerfile: Dockerfile
+            args:
+                USER_ID: ${USER_ID:-1003}
+                GROUP_ID: ${GROUP_ID:-1003}
+
+    server:
+        image: ttm4200_base:v1 
+        depends_on:
+            - "base"
+        container_name: server
+        hostname: server
+        stdin_open: true
+        tty: true
+        ports:
+            - "127.0.0.1:3000:${SSH_PORT:-22}"
+        volumes:
+            - ./server/:/home/ttm4200/work_dir
+        cap_add:
+            - NET_ADMIN
+        networks:
+            net1:
+                ipv4_address: 10.20.30.2
+
+    router:
+        image: ttm4200_base:v1 
+        depends_on:
+            - "base"
+        container_name: router
+        hostname: router
+        stdin_open: true
+        tty: true
+        ports:
+            - "127.0.0.1:4000:${SSH_PORT:-22}"
+        volumes:
+            - ./router/:/home/ttm4200/work_dir
+        cap_add:
+            - NET_ADMIN
+        networks:
+            net1:
+                ipv4_address: 10.20.30.3
+            net2:
+                ipv4_address: 10.20.40.3
+
