@@ -37,3 +37,4 @@ The course consists of several lab assignments that will be published throughout
 - [Lab 3 -- CS Socket Programming](lab3/)
 - [Lab 4 -- P2P Socket Programming](lab4/)
 - [Lab 5 -- Transport Layer (connectionless vs oriented)](lab5/)
+- [Lab 6 -- Transport Layer (Reliable Transport Protocol)](lab6/)
