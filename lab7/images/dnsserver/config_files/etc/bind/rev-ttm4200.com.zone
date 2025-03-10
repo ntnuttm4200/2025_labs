@@ -1,0 +1,21 @@
+
+
+$ORIGIN 1.100.129.in-addr.arpa.  
+$TTL 1h             
+; Start of Authority (SOA) record     
+@          IN  SOA   ns.ttm4200.com. root.ttm4200.com. ( 
+                                    2019111001; serial
+                                    1d ; refresh
+                                    2h ; retry
+                                    4w ; expire
+                                    1h ); minimum
+;Nameserver (NS) records declaring the nameserver that serve this zone                  
+@         IN  NS    ns.ttm4200.com.
+;pointer (PTR) record
+;Within the zone, you then need to create domain pointer (PTR) records for each IP address. For the address ‘202.12.28.131’, this would be
+2         IN  PTR    ns.ttm4200.com.
+4         IN  PTR    mail.ttm4200.com.
+3         IN  PTR    www.ttm4200.com.
+4         IN  PTR    chat.ttm4200.com.
+
+

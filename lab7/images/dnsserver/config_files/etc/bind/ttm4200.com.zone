@@ -1,0 +1,26 @@
+
+;$ORIGIN is a standard DNS directive tha define  a base name 
+;if an $ORIGIN directive is not defined - BIND synthesizes an $ORIGIN from the zone name in the named.conf.local file
+$ORIGIN ttm4200.com.    
+
+$TTL 1h                  
+@               IN  SOA   ns.ttm4200.com. root.ttm4200.com. ( 
+                          2019111001; serial
+                          1d ; refresh
+                          2h ; retry
+                          4w ; expire
+                          1h ); minimum
+@              IN  NS    ns.ttm4200.com.
+ns             IN  A     129.100.1.2
+
+@              IN  A     129.100.1.3
+
+www            IN  CNAME ttm4200.com. 
+
+@              IN  MX    10  mail.ttm4200.com.
+mail           IN  A     129.100.1.4
+
+
+
+
+; @ symbol is replaced with the current value of $ORIGIN.   
