@@ -18,7 +18,7 @@ routes = {
     ],
     "router3": [
         "ip route add 129.100.1.0/29 via 129.168.1.2",
-        "ip route add 129.100.1.24/29 via 129.168.1.2",
+        "ip route add 129.168.1.24/29 via 129.168.1.2",
     ]
 }
 
