@@ -39,3 +39,4 @@ The course consists of several lab assignments that will be published throughout
 - [Lab 5 -- Transport Layer (connectionless vs oriented)](lab5/)
 - [Lab 6 -- Transport Layer (Reliable Transport Protocol)](lab6/)
 - [Lab 7 -- Network Layer (Data Plane)](lab7/)
+- [Lab 7 -- Network Layer (Control Plane)](lab8/)
