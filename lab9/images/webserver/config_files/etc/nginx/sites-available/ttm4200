@@ -1,0 +1,17 @@
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        root /var/www/ttm4200;
+        index ttm4200_index.html;
+        server_name www.ttm4200.com;
+
+        location / {
+            try_files $uri $uri/ =404;
+        }
+        
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+            root /var/www/ttm4200;
+            index 50x.html;
+        }
+}

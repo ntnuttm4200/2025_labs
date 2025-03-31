@@ -1,0 +1,4 @@
+zone "ttm4200.com" IN {
+         type master;
+         file "/etc/bind/ttm4200.com.zone";
+ };
