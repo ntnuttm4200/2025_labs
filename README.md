@@ -41,3 +41,4 @@ The course consists of several lab assignments that will be published throughout
 - [Lab 7 -- Network Layer (Data Plane)](lab7/)
 - [Lab 8 -- Network Layer (Control Plane)](lab8/)
 - [Lab 9 -- Security in Computer  Networks](lab9/)
+- [Lab 10 -- Security in Computer  Networks (Part 2)](lab9/)
